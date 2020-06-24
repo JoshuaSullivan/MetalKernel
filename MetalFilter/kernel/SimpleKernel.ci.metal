@@ -5,5 +5,3 @@ extern "C" float4 SimpleKernel (coreimage::sample_t s, coreimage::destination de
 {
     return s;
 }
-
-
