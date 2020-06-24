@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  MetalFilter
-//
-//  Created by Joshua.Sullivan on 6/24/20.
-//
-
 import SwiftUI
 
 struct ContentView: View {

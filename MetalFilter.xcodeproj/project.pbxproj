@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,26 +11,40 @@
 		5A3FA0FD24A3DDD200E1A3C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA0FC24A3DDD200E1A3C3 /* ContentView.swift */; };
 		5A3FA0FF24A3DDD500E1A3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FA0FE24A3DDD500E1A3C3 /* Assets.xcassets */; };
 		5A3FA10224A3DDD500E1A3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FA10124A3DDD500E1A3C3 /* Preview Assets.xcassets */; };
-		5A3FA10D24A3DDD500E1A3C3 /* MetalFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA10C24A3DDD500E1A3C3 /* MetalFilterTests.swift */; };
-		5A3FA11824A3DDD500E1A3C3 /* MetalFilterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA11724A3DDD500E1A3C3 /* MetalFilterUITests.swift */; };
+		5A3FA12824A3DDFE00E1A3C3 /* SimpleKernel.ci.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA12724A3DDFE00E1A3C3 /* SimpleKernel.ci.metal */; };
+		5A3FA12A24A3DE6E00E1A3C3 /* SimpleFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA12924A3DE6E00E1A3C3 /* SimpleFilter.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5A3FA10924A3DDD500E1A3C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5A3FA0EF24A3DDD200E1A3C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5A3FA0F624A3DDD200E1A3C3;
-			remoteInfo = MetalFilter;
+/* Begin PBXBuildRule section */
+		5A3FA12B24A3DF6500E1A3C3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.ci.metal";
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).air",
+			);
+			runOncePerArchitecture = 0;
+			script = "xcrun metal -c -I $MTL_HEADER_SEARCH_PATHS -fcikernel \"${INPUT_FILE_PATH}\" -O \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 		};
-		5A3FA11424A3DDD500E1A3C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5A3FA0EF24A3DDD200E1A3C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5A3FA0F624A3DDD200E1A3C3;
-			remoteInfo = MetalFilter;
+		5A3FA12C24A3E02200E1A3C3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.ci.air";
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+				"${METAL_LIBRARY_OUTPUT_DIR}/${INPUT_FILE_BASE}.metallib",
+			);
+			runOncePerArchitecture = 0;
+			script = "xcrun metallib -cikernel \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 		};
-/* End PBXContainerItemProxy section */
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		5A3FA0F724A3DDD200E1A3C3 /* MetalFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,30 +53,12 @@
 		5A3FA0FE24A3DDD500E1A3C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A3FA10124A3DDD500E1A3C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A3FA10324A3DDD500E1A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A3FA10824A3DDD500E1A3C3 /* MetalFilterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalFilterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A3FA10C24A3DDD500E1A3C3 /* MetalFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalFilterTests.swift; sourceTree = "<group>"; };
-		5A3FA10E24A3DDD500E1A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A3FA11324A3DDD500E1A3C3 /* MetalFilterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalFilterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A3FA11724A3DDD500E1A3C3 /* MetalFilterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalFilterUITests.swift; sourceTree = "<group>"; };
-		5A3FA11924A3DDD500E1A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A3FA12724A3DDFE00E1A3C3 /* SimpleKernel.ci.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SimpleKernel.ci.metal; sourceTree = "<group>"; };
+		5A3FA12924A3DE6E00E1A3C3 /* SimpleFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5A3FA0F424A3DDD200E1A3C3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A3FA10524A3DDD500E1A3C3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A3FA11024A3DDD500E1A3C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				5A3FA0F924A3DDD200E1A3C3 /* MetalFilter */,
-				5A3FA10B24A3DDD500E1A3C3 /* MetalFilterTests */,
-				5A3FA11624A3DDD500E1A3C3 /* MetalFilterUITests */,
 				5A3FA0F824A3DDD200E1A3C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				5A3FA0F724A3DDD200E1A3C3 /* MetalFilter.app */,
-				5A3FA10824A3DDD500E1A3C3 /* MetalFilterTests.xctest */,
-				5A3FA11324A3DDD500E1A3C3 /* MetalFilterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +89,8 @@
 			children = (
 				5A3FA0FA24A3DDD200E1A3C3 /* MetalFilterApp.swift */,
 				5A3FA0FC24A3DDD200E1A3C3 /* ContentView.swift */,
+				5A3FA12624A3DDDC00E1A3C3 /* filter */,
+				5A3FA12524A3DDD900E1A3C3 /* kernel */,
 				5A3FA0FE24A3DDD500E1A3C3 /* Assets.xcassets */,
 				5A3FA10324A3DDD500E1A3C3 /* Info.plist */,
 				5A3FA10024A3DDD500E1A3C3 /* Preview Content */,
@@ -112,22 +106,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		5A3FA10B24A3DDD500E1A3C3 /* MetalFilterTests */ = {
+		5A3FA12524A3DDD900E1A3C3 /* kernel */ = {
 			isa = PBXGroup;
 			children = (
-				5A3FA10C24A3DDD500E1A3C3 /* MetalFilterTests.swift */,
-				5A3FA10E24A3DDD500E1A3C3 /* Info.plist */,
+				5A3FA12724A3DDFE00E1A3C3 /* SimpleKernel.ci.metal */,
 			);
-			path = MetalFilterTests;
+			path = kernel;
 			sourceTree = "<group>";
 		};
-		5A3FA11624A3DDD500E1A3C3 /* MetalFilterUITests */ = {
+		5A3FA12624A3DDDC00E1A3C3 /* filter */ = {
 			isa = PBXGroup;
 			children = (
-				5A3FA11724A3DDD500E1A3C3 /* MetalFilterUITests.swift */,
-				5A3FA11924A3DDD500E1A3C3 /* Info.plist */,
+				5A3FA12924A3DE6E00E1A3C3 /* SimpleFilter.swift */,
 			);
-			path = MetalFilterUITests;
+			path = filter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +134,8 @@
 				5A3FA0F524A3DDD200E1A3C3 /* Resources */,
 			);
 			buildRules = (
+				5A3FA12B24A3DF6500E1A3C3 /* PBXBuildRule */,
+				5A3FA12C24A3E02200E1A3C3 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -149,42 +143,6 @@
 			productName = MetalFilter;
 			productReference = 5A3FA0F724A3DDD200E1A3C3 /* MetalFilter.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5A3FA10724A3DDD500E1A3C3 /* MetalFilterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A3FA11F24A3DDD500E1A3C3 /* Build configuration list for PBXNativeTarget "MetalFilterTests" */;
-			buildPhases = (
-				5A3FA10424A3DDD500E1A3C3 /* Sources */,
-				5A3FA10524A3DDD500E1A3C3 /* Frameworks */,
-				5A3FA10624A3DDD500E1A3C3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5A3FA10A24A3DDD500E1A3C3 /* PBXTargetDependency */,
-			);
-			name = MetalFilterTests;
-			productName = MetalFilterTests;
-			productReference = 5A3FA10824A3DDD500E1A3C3 /* MetalFilterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5A3FA11224A3DDD500E1A3C3 /* MetalFilterUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5A3FA12224A3DDD500E1A3C3 /* Build configuration list for PBXNativeTarget "MetalFilterUITests" */;
-			buildPhases = (
-				5A3FA10F24A3DDD500E1A3C3 /* Sources */,
-				5A3FA11024A3DDD500E1A3C3 /* Frameworks */,
-				5A3FA11124A3DDD500E1A3C3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5A3FA11524A3DDD500E1A3C3 /* PBXTargetDependency */,
-			);
-			name = MetalFilterUITests;
-			productName = MetalFilterUITests;
-			productReference = 5A3FA11324A3DDD500E1A3C3 /* MetalFilterUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -197,14 +155,6 @@
 				TargetAttributes = {
 					5A3FA0F624A3DDD200E1A3C3 = {
 						CreatedOnToolsVersion = 12.0;
-					};
-					5A3FA10724A3DDD500E1A3C3 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 5A3FA0F624A3DDD200E1A3C3;
-					};
-					5A3FA11224A3DDD500E1A3C3 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 5A3FA0F624A3DDD200E1A3C3;
 					};
 				};
 			};
@@ -222,8 +172,6 @@
 			projectRoot = "";
 			targets = (
 				5A3FA0F624A3DDD200E1A3C3 /* MetalFilter */,
-				5A3FA10724A3DDD500E1A3C3 /* MetalFilterTests */,
-				5A3FA11224A3DDD500E1A3C3 /* MetalFilterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,20 +186,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A3FA10624A3DDD500E1A3C3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A3FA11124A3DDD500E1A3C3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -260,40 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A3FA0FD24A3DDD200E1A3C3 /* ContentView.swift in Sources */,
+				5A3FA12A24A3DE6E00E1A3C3 /* SimpleFilter.swift in Sources */,
 				5A3FA0FB24A3DDD200E1A3C3 /* MetalFilterApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A3FA10424A3DDD500E1A3C3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A3FA10D24A3DDD500E1A3C3 /* MetalFilterTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A3FA10F24A3DDD500E1A3C3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A3FA11824A3DDD500E1A3C3 /* MetalFilterUITests.swift in Sources */,
+				5A3FA12824A3DDFE00E1A3C3 /* SimpleKernel.ci.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5A3FA10A24A3DDD500E1A3C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5A3FA0F624A3DDD200E1A3C3 /* MetalFilter */;
-			targetProxy = 5A3FA10924A3DDD500E1A3C3 /* PBXContainerItemProxy */;
-		};
-		5A3FA11524A3DDD500E1A3C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5A3FA0F624A3DDD200E1A3C3 /* MetalFilter */;
-			targetProxy = 5A3FA11424A3DDD500E1A3C3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5A3FA11A24A3DDD500E1A3C3 /* Debug */ = {
@@ -456,90 +363,6 @@
 			};
 			name = Release;
 		};
-		5A3FA12024A3DDD500E1A3C3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VVBUBU9QC;
-				INFOPLIST_FILE = MetalFilterTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hairlessape.MetalFilterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MetalFilter.app/MetalFilter";
-			};
-			name = Debug;
-		};
-		5A3FA12124A3DDD500E1A3C3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VVBUBU9QC;
-				INFOPLIST_FILE = MetalFilterTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hairlessape.MetalFilterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MetalFilter.app/MetalFilter";
-			};
-			name = Release;
-		};
-		5A3FA12324A3DDD500E1A3C3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VVBUBU9QC;
-				INFOPLIST_FILE = MetalFilterUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hairlessape.MetalFilterUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MetalFilter;
-			};
-			name = Debug;
-		};
-		5A3FA12424A3DDD500E1A3C3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6VVBUBU9QC;
-				INFOPLIST_FILE = MetalFilterUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hairlessape.MetalFilterUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MetalFilter;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,24 +380,6 @@
 			buildConfigurations = (
 				5A3FA11D24A3DDD500E1A3C3 /* Debug */,
 				5A3FA11E24A3DDD500E1A3C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A3FA11F24A3DDD500E1A3C3 /* Build configuration list for PBXNativeTarget "MetalFilterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A3FA12024A3DDD500E1A3C3 /* Debug */,
-				5A3FA12124A3DDD500E1A3C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5A3FA12224A3DDD500E1A3C3 /* Build configuration list for PBXNativeTarget "MetalFilterUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5A3FA12324A3DDD500E1A3C3 /* Debug */,
-				5A3FA12424A3DDD500E1A3C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
