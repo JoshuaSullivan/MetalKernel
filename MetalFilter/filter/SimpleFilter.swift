@@ -2,8 +2,12 @@ import Foundation
 import CoreImage
 
 class SimpleFilter: CIFilter {
-    var inputImage: CIImage?
 
+    var offsetX: Float = 0.0
+    var offsetY: Float = 0.0
+    var offsetZ: Float = 10.0
+    var zoom: Float = 50.0
+    
     static var kernel: CIColorKernel? = {
             guard let url = Bundle.main.url(forResource: "SimpleKernel", withExtension: "ci.metallib") else { return nil }
 
@@ -18,8 +22,9 @@ class SimpleFilter: CIFilter {
 
     override var outputImage: CIImage? {
         get {
-            guard let input = inputImage else { return nil }
-            return SimpleFilter.kernel?.apply(extent: input.extent, arguments: [input])
+            let clampedZoom = max(1.0, min(zoom, 1000.0))
+            let scale = 1.0 / clampedZoom
+            return SimpleFilter.kernel?.apply(extent: .infinite, arguments: [offsetX, offsetY, offsetZ, scale])
         }
     }
 }
