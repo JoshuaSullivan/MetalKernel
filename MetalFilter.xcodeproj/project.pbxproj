@@ -13,6 +13,8 @@
 		5A3FA10224A3DDD500E1A3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3FA10124A3DDD500E1A3C3 /* Preview Assets.xcassets */; };
 		5A3FA12824A3DDFE00E1A3C3 /* SimpleKernel.ci.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA12724A3DDFE00E1A3C3 /* SimpleKernel.ci.metal */; };
 		5A3FA12A24A3DE6E00E1A3C3 /* SimpleFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3FA12924A3DE6E00E1A3C3 /* SimpleFilter.swift */; };
+		5ACFD99324A551A40066A5F1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACFD99124A551A30066A5F1 /* ViewModel.swift */; };
+		5ACFD99424A551A40066A5F1 /* PhotoEffectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACFD99224A551A40066A5F1 /* PhotoEffectService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -28,7 +30,7 @@
 				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).air",
 			);
 			runOncePerArchitecture = 0;
-			script = "xcrun metal -c -I $MTL_HEADER_SEARCH_PATHS -fcikernel \"${INPUT_FILE_PATH}\" -O \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			script = "xcrun metal -c -I $MTL_HEADER_SEARCH_PATHS -fcikernel \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 		};
 		5A3FA12C24A3E02200E1A3C3 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -55,6 +57,8 @@
 		5A3FA10324A3DDD500E1A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A3FA12724A3DDFE00E1A3C3 /* SimpleKernel.ci.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SimpleKernel.ci.metal; sourceTree = "<group>"; };
 		5A3FA12924A3DE6E00E1A3C3 /* SimpleFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFilter.swift; sourceTree = "<group>"; };
+		5ACFD99124A551A30066A5F1 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5ACFD99224A551A40066A5F1 /* PhotoEffectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoEffectService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 			children = (
 				5A3FA0FA24A3DDD200E1A3C3 /* MetalFilterApp.swift */,
 				5A3FA0FC24A3DDD200E1A3C3 /* ContentView.swift */,
+				5ACFD99224A551A40066A5F1 /* PhotoEffectService.swift */,
+				5ACFD99124A551A30066A5F1 /* ViewModel.swift */,
 				5A3FA12624A3DDDC00E1A3C3 /* filter */,
 				5A3FA12524A3DDD900E1A3C3 /* kernel */,
 				5A3FA0FE24A3DDD500E1A3C3 /* Assets.xcassets */,
@@ -193,10 +199,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACFD99324A551A40066A5F1 /* ViewModel.swift in Sources */,
 				5A3FA0FD24A3DDD200E1A3C3 /* ContentView.swift in Sources */,
 				5A3FA12A24A3DE6E00E1A3C3 /* SimpleFilter.swift in Sources */,
 				5A3FA0FB24A3DDD200E1A3C3 /* MetalFilterApp.swift in Sources */,
 				5A3FA12824A3DDFE00E1A3C3 /* SimpleKernel.ci.metal in Sources */,
+				5ACFD99424A551A40066A5F1 /* PhotoEffectService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

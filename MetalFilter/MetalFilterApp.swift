@@ -4,7 +4,7 @@ import SwiftUI
 struct MetalFilterApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: ViewModel())
         }
     }
 }
